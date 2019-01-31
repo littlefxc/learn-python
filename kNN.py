@@ -30,4 +30,5 @@ def classif0(inX, dataSet, labels, k):
     return sortedClassCount[0][0]
 
 group, labels = createDataSet()
-classif0([0,0], group, labels, 3)
+result = classif0([0,0], group, labels, 3)
+print(result)

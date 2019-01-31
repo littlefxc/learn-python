@@ -31,9 +31,26 @@
 4. 确定前 k 个点所在类别的出现频率
 5. 返回前 k 个点出现频率最高的类别作为当前点的预测分类
 
-### k-近邻算法：python3
+### k-近邻算法：python3 实现
 
-
+```python
+def classif0(inX, dataSet, labels, k):
+    # 计算距离
+    dataSetSize = dataSet.shape[0]
+    diffMat = tile(inX, (dataSetSize, 1)) - dataSet
+    sqDiffMat = diffMat**2
+    sqDistances = sqDiffMat.sum(axis=1)
+    distances = sqDistances**0.5
+    sortedDistIndicies = distances.argsort()
+    classCount = {}
+    # 选择距离最小的k个点
+    for i in range(k):
+        voteIlabel = labels[sortedDistIndicies[i]]
+        classCount[voteIlabel] = classCount.get(voteIlabel, 0) + 1
+    # 排序
+    sortedClassCount = sorted(classCount.items(), key = operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+```
 
 ## 参考书：
 
