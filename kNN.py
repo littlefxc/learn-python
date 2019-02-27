@@ -54,13 +54,15 @@ def file2matrix(filename):
     return returnMat, classLabelVector
 
 
-## 1
+## 1 : 执行 classif0
 # group, labels = createDataSet()
 # result = classif0([0, 0], group, labels, 3)
 # print(result) # B
 
 
-## 2
+## 2 : 执行 file2matrix(filename)
+# datingTestSet2.txt 中数据意义分别是
+# (每年获得的飞行常客里程数，玩视频游戏游戏所耗时间时间百分比，每周消费的冰淇凌公升数，(1:不喜欢的人，2：魅力一般的人，3：极具魅力的人))
 datingDataMat, datingLabels = file2matrix('datingTestSet2.txt')
 print(datingDataMat)
 print(datingLabels[0:20])
@@ -68,19 +70,22 @@ print(datingLabels[0:20])
 # 散点图使用 datingDataMat 矩阵的第二、第三列数据，分别表示特征值"玩视频游戏所耗时间百分比"和"每周所消耗的冰淇淋公升数"
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.scatter(datingDataMat[:, 1], datingDataMat[:, 2])
-plt.title(u"没有样本类别标签的约会数据散点图", fontproperties=font())
+ax.scatter(datingDataMat[:, 1], datingDataMat[:, 2], 15.0*array(datingLabels), 15.0*array(datingLabels))
+plt.title(u"带有样本类别标签的约会数据散点图", fontproperties=font())
 plt.xlabel(u"玩视频游戏所耗时间百分比", fontproperties=font())
 plt.ylabel(u"每周所消耗的冰淇淋公升数", fontproperties=font())
 plt.show()
 
-# fig = plt.figure()
-# ax1 = fig.add_subplot(211)
-# plt.xlabel("%time")
-# plt.ylabel("L")
-# ax1.scatter(datingDataMat[:,1],datingDataMat[:, 2], 15.0*array(datingLabels), 15.0*array(datingLabels))
-# ax2 = fig.add_subplot(212)
-# plt.xlabel("miles")
-# plt.ylabel("%time")
-# ax2.scatter(datingDataMat[:,0], datingDataMat[:, 1], 15.0*array(datingLabels), 15.0*array(datingLabels))
-# plt.show()
+fig = plt.figure()
+ax1 = fig.add_subplot(111)
+plt.xlabel(u"玩视频游戏游戏所耗时间时间百分比", fontproperties=font())
+plt.ylabel(u"每周消费的冰淇凌公升数", fontproperties=font())
+ax1.scatter(datingDataMat[:, 1], datingDataMat[:, 2], 15.0*array(datingLabels), 15.0*array(datingLabels))
+plt.show()
+
+fig = plt.figure()
+ax2 = fig.add_subplot(111)
+plt.xlabel(u"每年获得的飞行常客里程数", fontproperties=font())
+plt.ylabel(u"玩视频游戏游戏所耗时间时间百分比", fontproperties=font())
+ax2.scatter(datingDataMat[:, 0], datingDataMat[:, 1], 15.0*array(datingLabels), 15.0*array(datingLabels))
+plt.show()

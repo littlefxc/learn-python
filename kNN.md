@@ -34,6 +34,16 @@
 ### k-近邻算法：python3 实现
 
 ```python
+# coding:utf-8
+from numpy import *
+import operator
+import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
+
+
+def font():
+    return FontProperties(fname='/System/Library/Fonts/PingFang.ttc')
+
 def classif0(inX, dataSet, labels, k):
     # 计算距离
     dataSetSize = dataSet.shape[0]
@@ -66,7 +76,61 @@ def classif0(inX, dataSet, labels, k):
 - 玩视频游戏所耗时间百分比
 - 每周消费的冰淇淋公升数
 
+数据集：datingTestSet2.txt  
+数据集中前三列分别对应特征，最后一列是标签
 
+```python
+# coding:utf-8
+from numpy import *
+import operator
+import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
+
+
+def font():
+    return FontProperties(fname='/System/Library/Fonts/PingFang.ttc')
+
+def file2matrix(filename):
+    fr = open(filename)
+    arrayOLines = fr.readlines()
+    numberOfLines = len(arrayOLines)
+    returnMat = zeros((numberOfLines, 3))
+    classLabelVector = []
+    index = 0
+    for line in arrayOLines:
+        line = line.strip()
+        listFromLine = line.split('\t')
+        returnMat[index, :] = listFromLine[0:3]
+        classLabelVector.append(int(listFromLine[-1]))
+        index += 1
+    return returnMat, classLabelVector
+    
+
+# 执行 file2matrix(filename)
+datingDataMat, datingLabels = file2matrix('datingTestSet2.txt')
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.scatter(datingDataMat[:, 1], datingDataMat[:, 2], 15.0*array(datingLabels), 15.0*array(datingLabels))
+plt.title(u"带有样本类别标签的约会数据散点图", fontproperties=font())
+plt.xlabel(u"玩视频游戏所耗时间百分比", fontproperties=font())
+plt.ylabel(u"每周所消耗的冰淇淋公升数", fontproperties=font())
+plt.show()
+
+fig = plt.figure()
+ax1 = fig.add_subplot(111)
+plt.xlabel(u"玩视频游戏游戏所耗时间时间百分比", fontproperties=font())
+plt.ylabel(u"每周消费的冰淇凌公升数", fontproperties=font())
+ax1.scatter(datingDataMat[:, 1], datingDataMat[:, 2], 15.0*array(datingLabels), 15.0*array(datingLabels))
+plt.show()
+
+fig = plt.figure()
+ax2 = fig.add_subplot(111)
+plt.xlabel(u"每年获得的飞行常客里程数", fontproperties=font())
+plt.ylabel(u"玩视频游戏游戏所耗时间时间百分比", fontproperties=font())
+ax2.scatter(datingDataMat[:, 0], datingDataMat[:, 1], 15.0*array(datingLabels), 15.0*array(datingLabels))
+plt.show()
+```
 
 
 ## 参考书：
