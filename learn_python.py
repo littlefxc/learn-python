@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # 输出
 
 # 用print()在括号中加上字符串，就可以向屏幕上输出指定的文字。
