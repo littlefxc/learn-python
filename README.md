@@ -40,3 +40,15 @@ L = ['Michael', 'Sarah', 'Tracy', 'Bob', 'Jack']
 ```
 
 `L[0:3]` 表示，从索引0开始取，直到索引3为止，但不包括索引3。即索引0，1，2，正好是3个元素。
+
+## Python代码的格式
+
+```python
+def main():
+    # Todo: Add your code here
+    pass
+
+
+if __name__ == '__main__':
+    main()
+```
